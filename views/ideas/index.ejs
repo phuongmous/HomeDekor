@@ -1,0 +1,11 @@
+<%- include('../partials/header') %>
+    <div class="container">
+        <% ideas.forEach(function(idea) { %>
+        <div class="idea">
+            <!-- <div class="image"></div> -->
+            <div class="title"><%= idea.title %></div>
+            <a href="/ideas/<%= idea._id %>" class="view-button">View Idea</a>
+        </div>
+        <% }); %>
+    </div>
+<%- include('../partials/footer') %>

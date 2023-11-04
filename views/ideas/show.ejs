@@ -1,0 +1,25 @@
+<%- include('../partials/header') %>
+<section id="show-page">
+    <div class="idea">
+        <!-- <div class="image"></div> -->
+        <div class="title"><%= idea.title %></div>
+        <div class="content"><%= idea.content %></div>
+    </div>
+
+    <h4>Comments</h4>
+    <form id="add-comment-form"
+    method="post"
+    action="/ideas/<%= idea._id %>/comments">
+    <label>Comment:</label>
+    <textarea name="content"></textarea>
+    <input type="submit" value="Add Comment">
+    </form>
+
+    <% if (idea.comments.length) { %>
+        <% idea.comments.forEach(function(comment) { %>
+        <%= comment.createdAt.toLocaleDateString() %>
+        <%= comment.content %>
+        <% }); %>
+    <% } %>
+</section>
+<%- include('../partials/footer') %>
