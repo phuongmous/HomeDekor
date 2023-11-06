@@ -4,7 +4,14 @@ const Schema = mongoose.Schema;
 const commentSchema = new Schema({
     content: {
         type: String
-    }
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    userName: String,
+    userAvatar: String
 }, {
     timestamps: true
 });
@@ -18,7 +25,7 @@ const ideaSchema = new Schema({
         type: String,
         required: true
     },
-    comments: [commentSchema]
+    comments: [commentSchema],
 }, {
     timestamps: true
 });

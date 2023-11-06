@@ -10,4 +10,6 @@ router.get('/new', ideasController.new);
 router.get('/:id', ideasController.show);
 // POST /ideas
 router.post('/', ideasController.create);
+// Post /ideas/:id
+router.post('/:id', ideasController.addToFavorites);
 module.exports = router;

@@ -10,8 +10,14 @@
 <body>
     <nav>
         <a href="/">HomeDekor</a>
-        |
-        <a href="/ideas"> All Ideas</a>
-        |
-        <a href="/ideas/new">Add Idea</a>
+        
+        <a href="/ideas" <%- title === 'All Ideas' ? 'class="active"' : '' %>>All Ideas</a>
+        
+        <% if (user)  { %>
+            <a href="/ideas/new" <%- title === 'Add Idea' ? 'class="active"' : '' %>>Add Idea</a>
+            <a href="/favorites" <%- title === 'My Favorites' ? 'class="active"' : '' %>>My Favorites</a>
+            <a href="/logout">Log Out</a>
+        <% } else { %>
+            <a href="/auth/google" class="login">Log In</a>
+        <% } %>
     </nav>

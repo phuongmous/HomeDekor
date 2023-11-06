@@ -6,20 +6,32 @@
         <div class="content"><%= idea.content %></div>
     </div>
 
-    <h4>Comments</h4>
-    <form id="add-comment-form"
-    method="post"
-    action="/ideas/<%= idea._id %>/comments">
-    <label>Comment:</label>
-    <textarea name="content"></textarea>
-    <input type="submit" value="Add Comment">
-    </form>
-
-    <% if (idea.comments.length) { %>
-        <% idea.comments.forEach(function(comment) { %>
-        <%= comment.createdAt.toLocaleDateString() %>
-        <%= comment.content %>
-        <% }); %>
+    <% if(user) { %>
+        <form action="/ideas/<%= idea._id %>" method="post">
+            <button type="submit">Add to Favorites</button>
+        </form>
+        <h4>Comments</h4>
+        <form id="add-comment-form"
+        action="/ideas/<%= idea._id %>/comments"
+        method="post">
+        <label>Comment:</label>
+        <textarea name="content"></textarea>
+        <input type="submit" value="Add Comment">
+        </form>
+        <% if (idea.comments.length) { %>
+            <% idea.comments.forEach(function(comment) { %>
+                <img alt="avatar" src="<%= comment.userAvatar %>" referrerpolicy="no-referrer" ><%= comment.userName %>
+                <%= comment.createdAt.toLocaleDateString() %>
+                <%= comment.content %>
+                <% console.log('User ID:', user?._id, 'Comment User:', comment.user); %>
+                <% if (user?._id.equals(comment.user)) { %>
+                    <form action="/comments/<%= comment._id %>?_method=DELETE" method="post">
+                        <button type="submit">Delete</button>
+                    </form>
+                <% } %>
+            <% }); %>
+        <% } %>
     <% } %>
+
 </section>
 <%- include('../partials/footer') %>

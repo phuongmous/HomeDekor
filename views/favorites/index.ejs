@@ -1,0 +1,10 @@
+<%- include('../partials/header') %>
+
+<h2>My Favorites</h2>
+<ul class="favorites">
+    <% ideas.forEach(function(idea) { %>
+        <li><a href="/ideas/<%= idea._id %>"><%= idea.title %></a></li>
+    <% }); %>
+</ul>
+
+<%- include('../partials/footer') %>
