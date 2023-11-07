@@ -4,6 +4,9 @@
 <ul class="favorites">
     <% ideas.forEach(function(idea) { %>
         <li><a href="/ideas/<%= idea._id %>"><%= idea.title %></a></li>
+        <form action="/favorites/remove/<%= idea._id %>" method="post">
+            <button type="submit">Remove</button>
+        </form>
     <% }); %>
 </ul>
 

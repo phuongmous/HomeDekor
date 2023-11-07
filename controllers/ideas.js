@@ -1,17 +1,40 @@
 const Idea = require('../models/idea');
 const User = require('../models/user');
+const cloudinary = require('../utilities/cloudinary');
 
 module.exports = {
     index,
+    allIdeas,
+    searchIdeas,
     show,
     new: newIdea,
     create,
-    addToFavorites
+    addToFavorites,
 };
+
+
+async function searchIdeas(req, res) {
+    let ideaQuery = req.query.title ? {title: new RegExp(req.query.title, 'i')} : {};
+    const ideas = await Idea.find(ideaQuery);
+    res.render('ideas/search-results', { title: 'Search results', 
+      ideas,
+      titleSearch: req.query.title // use to set content of search form
+    });
+}
+
+
+async function allIdeas(req, res) {
+    try {
+        const ideas = await Idea.find({});
+        res.render('ideas/all', { title: 'All Ideas', ideas });
+      } catch (err) {
+        console.log(err);
+      }
+}
 
 async function index(req,res) {
     const ideas = await Idea.find({});
-    res.render('ideas/index', { title: 'All Ideas', ideas });
+    res.render('ideas/index', { title: 'My Ideas', ideas });
 }
 
 async function show(req,res) {
@@ -25,9 +48,15 @@ function newIdea(req,res) {
 }
 
 async function create(req,res) {
-    const{title, content} = req.body;
     try {
-        await Idea.create(req.body);
+        const result = await cloudinary.uploader.upload(req.file.path);
+        let idea = new Idea({
+            title: req.body.title,
+            content: req.body.content,
+            image: result.secure_url,
+            cloudinary_id: result.public_id
+        });
+        await idea.save();
         res.redirect('/ideas');
     }
     catch (err) {

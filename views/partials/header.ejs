@@ -10,14 +10,20 @@
 <body>
     <nav>
         <a href="/">HomeDekor</a>
-        
-        <a href="/ideas" <%- title === 'All Ideas' ? 'class="active"' : '' %>>All Ideas</a>
+
+        <a href="/ideas/all" <%- title === 'All Ideas' ? 'class="active"' : '' %>>All Ideas</a>
         
         <% if (user)  { %>
             <a href="/ideas/new" <%- title === 'Add Idea' ? 'class="active"' : '' %>>Add Idea</a>
+            <a href="/ideas" <%- title === 'My Ideas' ? 'class="active"' : '' %>>My Ideas</a>
             <a href="/favorites" <%- title === 'My Favorites' ? 'class="active"' : '' %>>My Favorites</a>
             <a href="/logout">Log Out</a>
         <% } else { %>
             <a href="/auth/google" class="login">Log In</a>
         <% } %>
+
+        <form action="/ideas/search" method="get">
+            <input type="text" name="title" placeholder="Search by Ideas' title">
+            <button type="submit">Search</button>
+        </form>
     </nav>

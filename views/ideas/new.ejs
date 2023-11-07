@@ -1,6 +1,7 @@
 <%- include('../partials/header') %>
 
-<form id="new-form" action="/ideas" method="post">
+<form id="new-form" action="/ideas" enctype="multipart/form-data" method="post">
+    <input type="file" name="image">
     <label>Title:</label>
     <input type="text" name="title">
     <br><br>

@@ -1,0 +1,9 @@
+<%- include('../partials/header') %>
+<h2>Search Results</h2>
+<p>Search Results for: <%= titleSearch %></p>
+<ul>
+  <% ideas.forEach(function(idea) { %>
+    <li><a href="/ideas/<%= idea._id %>"><%= idea.title %></a></li>
+  <% }); %>
+</ul>
+<%- include('../partials/footer') %>

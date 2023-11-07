@@ -23,8 +23,6 @@ async function create (req, res) {
 }
 
 async function deleteComment(req, res) {
-    console.log('Comment ID to Delete:', req.params.id);
-    console.log('Comment User ID', req.user._id)
     const idea = await Idea.findOne({ 'comments._id': req.params.id, 'comments.user': req.user._id});
     console.log('Idea:', idea);
     if (!idea) return res.redirect(`/ideas/${req.params.id}`);

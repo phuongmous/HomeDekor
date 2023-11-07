@@ -17,6 +17,12 @@ const commentSchema = new Schema({
 });
 
 const ideaSchema = new Schema({
+    image: {
+        type: String
+    },
+    cloudinary_id: {
+        type: String
+    },
     title: {
         type: String,
         required: true

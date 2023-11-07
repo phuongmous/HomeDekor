@@ -2,7 +2,8 @@ const Idea = require('../models/idea');
 const User = require('../models/user');
 
 module.exports = {
-    index
+    index,
+    removeIdeaFromFavorites
 }
 
 async function index(req, res) {
@@ -14,3 +15,18 @@ async function index(req, res) {
     console.log('ideas', ideas);
     res.render ('favorites/index', { title: 'My Favorites', ideas})
 }
+
+async function removeIdeaFromFavorites(req, res) {
+    const userId = req.user._id;
+    const ideaId = req.params.id;
+
+    try {
+        const user = await User.findById(userId);
+        // Remove the idea from the favorites array
+        user.favorites.remove(ideaId); 
+        await user.save();
+        res.redirect('/favorites');
+    } catch (err) {
+        coonsole.log(err);
+    }
+};
