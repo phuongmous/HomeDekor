@@ -14,8 +14,16 @@ router.get('/', ideasController.index);
 // GET /ideas/new
 router.get('/new', ensureLoggedIn, ideasController.new);
 
-// GET /ideas/search'
+// GET /ideas/search
 router.get('/search', ideasController.searchIdeas);
+
+// GET /ideas/:id/edit
+router.get('/:id/edit', ensureLoggedIn, ideasController.edit);
+
+//  PUT /:id
+router.put('/:id', upload.single('image'), ideasController.update);
+
+router.delete('/:id', ensureLoggedIn, ideasController.delete)
 
 // GET /ideas/:id
 router.get('/:id', ideasController.show);

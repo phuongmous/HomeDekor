@@ -9,9 +9,49 @@ module.exports = {
     show,
     new: newIdea,
     create,
+    edit,
+    update,
+    delete: deleteIdea,
     addToFavorites,
 };
 
+async function deleteIdea(req, res) {
+    console.log('Idea ID', req.params.id, 'userIdea', req.user._id);
+    await Idea.findOneAndDelete(
+        {_id: req.params.id, userIdea: req.user._id}
+    )
+    res.redirect(`/ideas`);
+}
+
+async function update(req, res) {
+    console.log('TITLE', req.file);
+    try {
+        const idea = {
+            title: req.body.title,
+            content: req.body.content,
+            }
+        if (req.file) {
+            const result = await cloudinary.uploader.upload(req.file.path);
+            idea.image = result.secure_url;
+            idea.cloudinary_id = result.public_id;
+        }
+        const updatedIdea = await Idea.findOneAndUpdate(
+            {_id: req.params.id, userIdea: req.user._id},
+            idea,
+            {new: true}
+        );
+        return res.redirect(`/ideas/${req.params.id}`);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function edit(req, res) {
+   const idea = await Idea.findOne({_id: req.params.id, userIdea: req.user._id});
+   console.log('_id:', req.params.id, 'userIdea:', req.user._id);
+   if (!idea) return res.redirect('/ideas');
+   res.render('ideas/edit', { title: 'Edit Idea', idea });
+}
 
 async function searchIdeas(req, res) {
     let ideaQuery = req.query.title ? {title: new RegExp(req.query.title, 'i')} : {};
@@ -51,6 +91,7 @@ async function create(req,res) {
     try {
         const result = await cloudinary.uploader.upload(req.file.path);
         let idea = new Idea({
+            userIdea: req.user._id,
             title: req.body.title,
             content: req.body.content,
             image: result.secure_url,

@@ -4,9 +4,16 @@
         <div class="image"><img src="<%= idea.image %>" alt="picture"></div>
         <div class="title"><%= idea.title %></div>
         <div class="content"><%= idea.content %></div>
+        <!-- <button type="submit"><a href="/ideas/<%= idea._id %>/edit">Edit</a></button> -->
     </div>
 
     <% if(user) { %>
+        <form action="/ideas/<%= idea._id %>?_method=DELETE" method="post">
+            <button type="submit">Delete</button>
+        </form>
+        <form action="/ideas/<%= idea._id %>/edit">
+            <button type="submit">Edit</button>
+        </form>
         <form action="/ideas/<%= idea._id %>" method="post">
             <button type="submit">Add to Favorites</button>
         </form>

@@ -17,6 +17,10 @@ const commentSchema = new Schema({
 });
 
 const ideaSchema = new Schema({
+    userIdea: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
     image: {
         type: String
     },
@@ -32,6 +36,7 @@ const ideaSchema = new Schema({
         required: true
     },
     comments: [commentSchema],
+    
 }, {
     timestamps: true
 });

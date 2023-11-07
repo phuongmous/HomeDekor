@@ -5,25 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Montserrat:ital@0;1&family=Playpen+Sans&family=Poiret+One&family=Rye&display=swap" rel="stylesheet">
   <title><%= title %></title>
 </head>
 <body>
     <nav>
-        <a href="/">HomeDekor</a>
-
-        <a href="/ideas/all" <%- title === 'All Ideas' ? 'class="active"' : '' %>>All Ideas</a>
-        
-        <% if (user)  { %>
-            <a href="/ideas/new" <%- title === 'Add Idea' ? 'class="active"' : '' %>>Add Idea</a>
-            <a href="/ideas" <%- title === 'My Ideas' ? 'class="active"' : '' %>>My Ideas</a>
-            <a href="/favorites" <%- title === 'My Favorites' ? 'class="active"' : '' %>>My Favorites</a>
-            <a href="/logout">Log Out</a>
-        <% } else { %>
-            <a href="/auth/google" class="login">Log In</a>
-        <% } %>
-
-        <form action="/ideas/search" method="get">
-            <input type="text" name="title" placeholder="Search by Ideas' title">
-            <button type="submit">Search</button>
-        </form>
+        <div class="nav-container">
+            <div class="nav-1">
+                <a href="/">HomeDekor</a>
+            </div>
+            <div class="nav-2">
+                <a class="nav-all-ideas" href="/ideas/all" <%- title === 'All Ideas' ? 'class="active"' : '' %>>All Ideas</a>
+                <% if (user)  { %>
+                    <a class="nav-add-idea" href="/ideas/new" <%- title === 'Add Idea' ? 'class="active"' : '' %>>Add Idea</a>
+                    <a class="nav-my-ideas" href="/ideas" <%- title === 'My Ideas' ? 'class="active"' : '' %>>My Ideas</a>
+                    <a class="nav-my-favorites" href="/favorites" <%- title === 'My Favorites' ? 'class="active"' : '' %>>My Favorites</a>
+            </div>
+            <div class="nav-3">   
+                <a class="nav-log-out" href="/logout">Log Out</a>
+                <% } else { %>
+                <a class="nav-log-in" href="/auth/google" class="login">Log In</a>
+                <% } %>
+                <form class="nav-search-form" action="/ideas/search" method="get">
+                    <input class="nav-search-bar" type="text" name="title" placeholder=" 🔍 Search by Ideas' Title">
+                    <!-- <button class="nav-search-button" type="submit"></button> -->
+                </form>
+            </div>
+        </div>
     </nav>
