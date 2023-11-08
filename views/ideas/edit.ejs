@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-
+<div class="collection-title">Edit Your Idea</div>
 <form id="new-form" action="/ideas/<%= idea._id %>?_method=PUT" enctype="multipart/form-data" method="post">
     <div class="image"><img src="<%= idea.image %>" alt="picture"></div>
     <input type="file" name="image">

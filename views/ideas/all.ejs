@@ -1,11 +1,20 @@
 <%- include('../partials/header') %>
-    <div class="container">
-        <% ideas.forEach(function(idea) { %>
-        <div class="idea">
-            <div class="image"><img src="<%= idea.image %>" alt="picture"></div>
-            <div class="title"><%= idea.title %></div>
-            <a href="/ideas/<%= idea._id %>" class="view-button">View Idea</a>
-        </div>
-        <% }); %>
+    <div class="collection-container">
+        <div class="collection-title">All Ideas</div>
+        <div class="container text-center">
+            <div class="row row-cols-4">
+                <% ideas.forEach(function(idea) { %>
+                    <div class="col-4">
+                        <div class="row">
+                            <img class="row-1" src="<%= idea.image %>" alt="picture">
+                            <div class="row-2"><%= idea.title %></div>
+                            <div class="row-3">
+                            <button class="btn btn-dark btn-sm"><a href="/ideas/<%= idea._id %>">View Idea</a></button>
+                            </div>
+                        </div>  
+                    </div>
+                <% }); %>
+            </div>
+        </div>  
     </div>
 <%- include('../partials/footer') %>

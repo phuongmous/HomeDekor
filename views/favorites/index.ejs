@@ -1,13 +1,21 @@
 <%- include('../partials/header') %>
 
-<h2>My Favorites</h2>
-<ul class="favorites">
-    <% ideas.forEach(function(idea) { %>
-        <li><a href="/ideas/<%= idea._id %>"><%= idea.title %></a></li>
-        <form action="/favorites/remove/<%= idea._id %>" method="post">
-            <button type="submit">Remove</button>
-        </form>
-    <% }); %>
-</ul>
-
+<div class="collection-title">My Favorites</div>
+<div class="container text-center">
+    <div class="row row-cols-4">
+        <% ideas.forEach(function(idea) { %>
+            <div class="col-4">
+                <div class="row">
+                    <img class="row-1" src="<%= idea.image %>" alt="picture">
+                    <a class="row-2" href="/ideas/<%= idea._id %>"><%= idea.title %></a>
+                    <div class="row-3">
+                        <form action="/favorites/remove/<%= idea._id %>" method="post">
+                            <button class="btn btn-dark btn-sm" type="submit">Remove</button>
+                        </form>
+                    </div>
+                </div>  
+            </div>
+        <% }); %>
+    </div>
+</div>
 <%- include('../partials/footer') %>
