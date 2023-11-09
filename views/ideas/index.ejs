@@ -5,15 +5,15 @@
             <% ideas.forEach(function(idea) { %>
                 <div class="col-4">
                     <div class="row">
-                        <img class="row-1" src="<%= idea.image %>" alt="picture">
+                        <img class="row-1" src="<%= idea.image.replace("/upload/","/upload/c_fill,h_600,w_500/") %>" alt="picture">
                         <div class="row-2"><%= idea.title %></div>
-                        <div class="row align-items-start">
-                            <div class="col-7">
+                        <div class="row-3-style">
+                            <div class="row-button">
                                 <button class="btn btn-dark btn-sm"><a href="/ideas/<%= idea._id %>">View Idea</a></button>
+                                <form action="/ideas/<%= idea._id %>?_method=DELETE" method="post">
+                                    <button class="btn btn-dark btn-sm" type="submit">Delete</button>
+                                </form>
                             </div>
-                            <form class="col-5" action="/ideas/<%= idea._id %>?_method=DELETE" method="post">
-                                <button class="btn btn-dark btn-sm" type="submit">Delete</button>
-                            </form>
                         </div>
                     </div>
                 </div>

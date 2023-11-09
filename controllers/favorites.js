@@ -19,14 +19,15 @@ async function index(req, res) {
 async function removeIdeaFromFavorites(req, res) {
     const userId = req.user._id;
     const ideaId = req.params.id;
-
     try {
         const user = await User.findById(userId);
         // Remove the idea from the favorites array
-        user.favorites.remove(ideaId); 
+        if (user.favorites.includes(ideaId)) {
+        user.favorites.remove(ideaId);
         await user.save();
+        }
         res.redirect('/favorites');
     } catch (err) {
-        coonsole.log(err);
+        console.log(err);
     }
 };

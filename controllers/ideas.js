@@ -12,7 +12,7 @@ module.exports = {
     edit,
     update,
     delete: deleteIdea,
-    addToFavorites,
+    addToFavorites
 };
 
 async function deleteIdea(req, res) {

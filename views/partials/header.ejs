@@ -10,29 +10,22 @@
         <title><%= title %></title>
     </head>
     <body>
-        <nav>
-            <div class="nav-container">
-                <div class="nav-1">
-                    <a href="/">HomeDekor</a>
-                </div>
-                <div class="nav-2">
-                    <a class="nav-all-ideas" href="/ideas/all" <%- title === 'All Ideas' ? 'class="active"' : '' %>>All Ideas</a>
-                </div>
-                <div class="nav-3">
-                    <% if (user)  { %>
-                        <a class="nav-add-idea" href="/ideas/new" <%- title === 'Add Idea' ? 'class="active"' : '' %>>Add Idea</a>
-                        <a class="nav-my-ideas" href="/ideas" <%- title === 'My Ideas' ? 'class="active"' : '' %>>My Ideas</a>
-                        <a class="nav-my-favorites" href="/favorites" <%- title === 'My Favorites' ? 'class="active"' : '' %>>My Favorites</a>
-                </div>
-                <div class="nav-4">   
-                    <a class="nav-log-out" href="/logout">Log Out</a>
-                    <% } else { %>
-                    <a class="nav-log-in" href="/auth/google" class="login">Log In</a>
-                    <% } %>
-                    <form class="nav-search-form" action="/ideas/search" method="get">
-                        <input class="nav-search-bar" type="text" name="title" placeholder=" 🔍 Search by Ideas' Title">
-                        <!-- <button class="nav-search-button" type="submit"></button> -->
-                    </form>
-                </div>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid" id="one">
+                <a class="navbar-brand" href="/">HomeDekor</a>
+                <form class="d-flex" role="search" action="/ideas/search" method="get">
+                    <input class="form-control me-2" type="text" name="title" placeholder=" 🔍  Search" aria-label="Search">
+                </form>
+            </div>
+            <div class="container-fluid">
+                <a class="nav-link active" aria-current="page" href="/ideas/all" <%- title === 'All Ideas' ? 'class="active"' : '' %>>All Ideas</a>
+                <% if (user)  { %>
+                    <a class="nav-link active" aria-current="page" href="/ideas/new" <%- title === 'Add Idea' ? 'class="active"' : '' %>>Add Idea</a>
+                    <a class="nav-link active" aria-current="page" href="/ideas" <%- title === 'My Ideas' ? 'class="active"' : '' %>>My Ideas</a>
+                    <a class="nav-link active" aria-current="page" href="/favorites" <%- title === 'My Favorites' ? 'class="active"' : '' %>>My Favorites</a>
+                    <a class="nav-link active" aria-current="page" href="/logout">Log Out</a>
+                <% } else { %>
+                    <a class="nav-link active" aria-current="page" href="/auth/google">Log In</a>
+                <% } %>
             </div>
         </nav>
