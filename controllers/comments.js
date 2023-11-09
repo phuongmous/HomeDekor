@@ -7,7 +7,6 @@ module.exports = {
 
 async function create (req, res) {
     const idea = await Idea.findById(req.params.id);
-
     // Add the user-centric info to req.body (the new comment)
     req.body.user = req.user._id;
     req.body.userName = req.user.name;
@@ -20,7 +19,7 @@ async function create (req, res) {
         console.log(err);
     }
     res.redirect(`/ideas/${idea._id}`);
-}
+};
 
 async function deleteComment(req, res) {
     const idea = await Idea.findOne({ 'comments._id': req.params.id, 'comments.user': req.user._id});
@@ -31,4 +30,4 @@ async function deleteComment(req, res) {
     console.log('After removing comment:', idea.comments);
     await idea.save();
     res.redirect(`/ideas/${idea._id}`);
-}
+};

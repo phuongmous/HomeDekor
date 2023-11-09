@@ -5,7 +5,7 @@ const favoritesController = require('../controllers/favorites');
 const ensureLoggedIn = require('../config/ensureLoggedIn');
 
 // GET /favorites
-router.get('/', favoritesController.index)
+router.get('/', favoritesController.index);
 // POST /favorites/remove/:id
 router.post('/remove/:id', ensureLoggedIn, favoritesController.removeIdeaFromFavorites);
 

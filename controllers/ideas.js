@@ -21,7 +21,7 @@ async function deleteIdea(req, res) {
         {_id: req.params.id, userIdea: req.user._id}
     )
     res.redirect(`/ideas`);
-}
+};
 
 async function update(req, res) {
     console.log('TITLE', req.file);
@@ -44,14 +44,14 @@ async function update(req, res) {
     } catch (err) {
         console.log(err);
     }
-}
+};
 
 async function edit(req, res) {
    const idea = await Idea.findOne({_id: req.params.id, userIdea: req.user._id});
    console.log('_id:', req.params.id, 'userIdea:', req.user._id);
    if (!idea) return res.redirect('/ideas');
    res.render('ideas/edit', { title: 'Edit Idea', idea });
-}
+};
 
 async function searchIdeas(req, res) {
     let ideaQuery = req.query.title ? {title: new RegExp(req.query.title, 'i')} : {};
@@ -60,7 +60,7 @@ async function searchIdeas(req, res) {
       ideas,
       titleSearch: req.query.title // use to set content of search form
     });
-}
+};
 
 
 async function allIdeas(req, res) {
@@ -70,22 +70,22 @@ async function allIdeas(req, res) {
       } catch (err) {
         console.log(err);
       }
-}
+};
 
 async function index(req,res) {
     const ideas = await Idea.find({});
     res.render('ideas/index', { title: 'My Ideas', ideas });
-}
+};
 
 async function show(req,res) {
     const idea = await Idea.findById(req.params.id);
     res.render('ideas/show', { title: '', idea });
-}
+};
 
 function newIdea(req,res) {
     const newIdea = new Idea();
     res.render('ideas/new', { title: 'New Idea', errorMsg: ''});
-}
+};
 
 async function create(req,res) {
     try {
@@ -104,7 +104,7 @@ async function create(req,res) {
         console.log(err);
         res.render('ideas/new', { errorMsg: err.message });
     }
-}
+};
 
 async function addToFavorites(req, res) {
     const ideaId = req.params.id;
@@ -119,4 +119,4 @@ async function addToFavorites(req, res) {
     await user.save();
     }
     res.redirect(`/ideas/${ideaId}`);
-}
+};

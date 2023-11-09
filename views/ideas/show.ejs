@@ -24,23 +24,29 @@
                         </div>
                     </div>
                     <h4>Comments:</h4>
-                    <% if (idea.comments.length) { %>
-                        <% idea.comments.forEach(function(comment) { %>
-                            <img class="avatar" alt="avatar" src="<%= comment.userAvatar %>" referrerpolicy="no-referrer" >
-                            <div class="user-comment">
-                                <%= comment.userName %>
-                                <%= comment.content %>
-                            </div>
-                            <br>
-                            <!-- <%= comment.createdAt.toLocaleDateString() %> -->
-                            <% console.log('User ID:', user?._id, 'Comment User:', comment.user); %>
-                            <% if (user?._id.equals(comment.user)) { %>
-                                <form class="row-3-style" action="/comments/<%= comment._id %>?_method=DELETE" method="post">
-                                    <button type="submit" class="btn btn-dark btn-sm">Remove</button>
-                                </form>
+                    <div class="comment-section">
+                        <div class="comment">
+                            <% if (idea.comments.length) { %>
+                                <% idea.comments.forEach(function(comment) { %>
+                                    <div class="comment-container">
+                                        <img class="avatar" alt="avatar" src="<%= comment.userAvatar %>" referrerpolicy="no-referrer" >
+                                        <div class="user-comment">
+                                            <%= comment.userName %>
+                                            <%= comment.content %>
+                                        </div>
+                                        <br>
+                                        <!-- <%= comment.createdAt.toLocaleDateString() %> -->
+                                        <% console.log('User ID:', user?._id, 'Comment User:', comment.user); %>
+                                        <% if (user?._id.equals(comment.user)) { %>
+                                            <form class="row-3-style-comment" action="/comments/<%= comment._id %>?_method=DELETE" method="post">
+                                                <button type="submit" class="btn btn-dark btn-sm">Remove</button>
+                                            </form>
+                                        <% } %>
+                                    </div>
+                                <% }); %>
                             <% } %>
-                        <% }); %>
-                    <% } %>
+                        </div>
+                    </div>
                     <form class="input-group" action="/ideas/<%= idea._id %>/comments" method="post">
                         <textarea type="text" name="content" class="form-control" aria-label="With textarea"></textarea>
                         <input class="input-group-text" type="submit" value="Add Comment">

@@ -5,8 +5,8 @@ const commentsController = require('../controllers/comments');
 const ensureLoggedIn = require('../config/ensureLoggedIn');
 
 // POST /ideas/:id/comments (create a comment for an idea post)
-router.post('/ideas/:id/comments', ensureLoggedIn, commentsController.create)
+router.post('/ideas/:id/comments', ensureLoggedIn, commentsController.create);
 // DELETE /comments/:id
-router.delete('/comments/:id', ensureLoggedIn, commentsController.delete)
+router.delete('/comments/:id', ensureLoggedIn, commentsController.delete);
 
 module.exports = router;

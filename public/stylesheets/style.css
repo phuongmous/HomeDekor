@@ -79,12 +79,6 @@ img.row-1 {
   line-height: 25px;
 }
 
-/* .col-7, .col-5 {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-align: center;
-} */
-
 .add-idea-form {
   display: flex;
   padding: 0px 100px;
@@ -100,11 +94,6 @@ img.row-1 {
   background-color: rgb(248, 249, 250);
 }
 
-/* .row align-items-start {
-  padding-left: 50px;
-  padding-right: 50px;
-} */
-
 .row-3-style {
   display: flex;
   justify-content: center;
@@ -114,6 +103,12 @@ img.row-1 {
 form.row-3-style {
   padding-top: 0px;
   padding-bottom: 40px;
+  float: left;
+}
+
+form.row-3-style-comment {
+  padding-top: 10px;
+  padding-bottom: 15px;
   float: left;
 }
 
@@ -139,6 +134,7 @@ form.row-3-style {
 #idea-content.row-1, .user-comment {
   text-align: justify;
   font-weight: bold;
+  color:#000000;
 }
 
 form {
@@ -156,6 +152,10 @@ h5 {
   line-height: 1.7em;
 }
 
+.comment {
+  display:  flex;
+  flex-direction: column;
+}
 .avatar {
   border-radius: 50%;
   width: 50px;
@@ -166,6 +166,7 @@ h5 {
 .user-comment {
   padding-top: 15px;
   font-size: 14px;
+  color:#000000;
 }
 .input-group-text {
   font-weight: bolder;
@@ -178,8 +179,4 @@ p {
 
 .edit-page {
   display: flex;
-}
-
-.edit-image {
-  padding: 
 }
