@@ -2,8 +2,12 @@
 Welcome to Home Decorator, a web application for sharing and exploring home decoration ideas.
 
 ## Project Description
-Home Decorator is a web application that allows users to discover, save, and share home decoration ideas and inspiration. Users can view and search for posts from other users, and after logging in with their Google account, they gain additional features, including the ability to:
+<img src="public/images/homepage.png" alt="Home Page Image" width="580" height="600">
+<img src="public/images/my-idea.png" alt="My Ideas Image" width="580" height="600">
+<img src="public/images/view-idea.png" alt="View Idea Image" width="580" height="600">
+<img src="public/images/add-idea.png" alt="Add Idea Image" width="580" height="600">
 
+Home Decorator is a web application that allows users to discover, save, and share home decoration ideas and inspiration. Users can view and search for posts from other users, and after logging in with their Google account, they gain additional features, including the ability to:
 - Add posts to their favorite list.
 + Leave comments on posts and delete their own comments.
 - Create, edit, and delete their own home decoration ideas.
