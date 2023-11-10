@@ -3,7 +3,7 @@
 <div class="idea-container">
     <div class="row align-items-start">
         <div class="col-7">
-            <img src="<%= idea.image%>" class="rounded mx-auto d-block" alt="picture">
+            <img src="<%= idea.image%>" style="width: 50vw; height: 70vh; border-radius: 30px;" alt="picture">
         </div>
         <div class="col-5">
             <form id="new-form" action="/ideas/<%= idea._id %>?_method=PUT" enctype="multipart/form-data" method="post">

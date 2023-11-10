@@ -12,6 +12,7 @@ body {
   font: 12px "Montserrat", Helvetica, Arial, sans-serif;
   margin: 0;
 }
+
 #one.container-fluid {
   justify-content: normal;
   width: 70%;
@@ -36,9 +37,11 @@ body {
   font-size: 18px;
   font-weight: bold;
 }
+
 .image-homepage {
   padding: 50px 150px 100px;
 }
+
 .collection-container {
   padding-left: 50px;
   padding-right: 50px;
@@ -49,16 +52,7 @@ padding: 50px 100px 50px;
 font-size: 40px;
 text-align: center;
 font-weight: bold;
-}
-
-a {
-  color: #ffffff;
-  text-decoration: none;
-  font-style: bold;
-}
-
-a.row-2 {
-  color:#000000;
+text-transform: capitalize;
 }
 
 .row-1 {
@@ -66,32 +60,18 @@ a.row-2 {
   padding-bottom: 15px;
 }
 
-img.row-1 {
-  border-radius: 30px;
-}
-
 .row-2 {
-  height: 40px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  height: 3em;
   text-transform: capitalize;
   font-size: 1.5em;
   font-weight: bold;
   text-align: center;
   line-height: 25px;
-}
-
-.add-idea-form {
-  display: flex;
-  padding: 0px 100px;
-  font-size: 12px;
-}
-
-#new-form {
-  width: 100%;
-}
-
-.btn-outline-secondary {
-  color: black;
-  background-color: rgb(248, 249, 250);
 }
 
 .row-3-style {
@@ -100,30 +80,49 @@ img.row-1 {
   padding-bottom: 30px;
 }
 
-form.row-3-style {
-  padding-top: 0px;
-  padding-bottom: 40px;
-  float: left;
-}
-
-form.row-3-style-comment {
-  padding-top: 10px;
-  padding-bottom: 15px;
-  float: left;
-}
-
 .row-button {
   display: flex;
   gap: 20px;
 }
+
+.btn-outline-secondary {
+  color: black;
+  background-color: rgb(248, 249, 250);
+}
+
+img.row-1 {
+  border-radius: 30px;
+}
+
+#new-form {
+  width: 100%;
+}
+
+form {
+  text-align: center;
+}
+
+.add-idea-form {
+  display: flex;
+  padding: 0px 100px;
+  font-size: 12px;
+}
+
+form.row-3-style {
+  padding-top: 0px;
+  padding-bottom: 40px;
+  float: right;
+}
+
+form.row-3-style-comment {
+  padding-top: 10px;
+  float: left;
+}
+
 .idea-container {
   padding: 20px 50px;
   text-align: justify;
   line-height: 1.7em;
-}
-.edit-page-container {
-  padding: 20px 100px;
-  text-align: justify;
 }
 
 #idea-content {
@@ -134,11 +133,45 @@ form.row-3-style-comment {
 #idea-content.row-1, .user-comment {
   text-align: justify;
   font-weight: bold;
-  color:#000000;
+  color:black;
 }
 
-form {
-  text-align: center;
+.comment-container {
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  }
+  
+.comment {
+  display:  flex;
+  flex-direction: column;
+}
+  
+.avatar {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  float:left;
+}
+  
+.user-comment, small {
+  padding-top: 15px;
+  font-size: 14px;
+  color:#000000;
+}
+  
+.input-group-text {
+  font-weight: bolder;
+}
+
+.edit-page {
+  display: flex;
+}
+
+.edit-page-container {
+  padding: 20px 100px;
+  text-align: justify;
 }
 
 h4 {
@@ -152,31 +185,17 @@ h5 {
   line-height: 1.7em;
 }
 
-.comment {
-  display:  flex;
-  flex-direction: column;
-}
-.avatar {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  float:left;
-}
-
-.user-comment {
-  padding-top: 15px;
-  font-size: 14px;
-  color:#000000;
-}
-.input-group-text {
-  font-weight: bolder;
-}
-
 p {
   font-size: 25px;
   line-height: 2em;
 }
 
-.edit-page {
-  display: flex;
+a {
+  color: #ffffff;
+  text-decoration: none;
+  font-style: bold;
+}
+
+a.row-2 {
+  color:#000000;
 }

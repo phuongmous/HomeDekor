@@ -23,7 +23,7 @@ router.get('/:id/edit', ensureLoggedIn, ideasController.edit);
 //  PUT /:id
 router.put('/:id', upload.single('image'), ideasController.update);
 
-router.delete('/:id', ensureLoggedIn, ideasController.delete);
+router.delete('/:id', ensureLoggedIn, ideasController.delete)
 
 // GET /ideas/:id
 router.get('/:id', ideasController.show);
